@@ -40,13 +40,24 @@ router.post('/register', function(req, res){
 		});
 	} else {
 		// console.log("passed")
+		
 		var newUser = new User({
 			name: name,
 			email:email,
 			username: username,
 			password: password
 		});
-		}
+
+		User.createUser(newUser, function(err, user){
+			if(err) throw err;
+			console.log(user);
+		});
+
+		req.flash('success_msg', 'You are registered and can now login');
+
+		res.redirect('/users/login');
+	}
+		
 });
 
 module.exports = router;
