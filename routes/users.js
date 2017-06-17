@@ -59,5 +59,11 @@ router.post('/register', function(req, res){
 	}
 		
 });
-
+//from passport documentation
+router.post('/login',
+  passport.authenticate('local', {successRedirect:'/', failureRedirect:'/users/login',failureFlash: true}),
+  function(req, res) {
+    res.redirect('/');
+  });
+  
 module.exports = router;
