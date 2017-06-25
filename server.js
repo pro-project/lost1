@@ -75,6 +75,7 @@ app.use(function (req, res, next) {
 app.use('/', routes);
 app.use('/users', users);
 
+//initial
 // app.get('/', function (req, res) {
 //   res.send('Hello World!')
 // })
