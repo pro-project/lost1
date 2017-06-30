@@ -15,6 +15,11 @@ router.get('/login', function(req, res){
 	res.render('login');
 });
 
+// AfterLogin
+router.get('/index', function(req, res){
+	res.render('index');
+});
+
 //resgister the user
 router.post('/register', function(req, res){
 	var name = req.body.name;
@@ -98,7 +103,7 @@ passport.deserializeUser(function(id, done) {
 
 //from passport documentation
 router.post('/login',
-  passport.authenticate('local', {successRedirect:'/', failureRedirect:'/users/login',failureFlash: true}),
+  passport.authenticate('local', {successRedirect:'index', failureRedirect:'/users/login',failureFlash: true}),
   function(req, res) {
     res.redirect('/');
   });
